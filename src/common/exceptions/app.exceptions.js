@@ -1,8 +1,9 @@
 export function BadRequestException({
   errMsg = "Bad Request",
-  cause = { statusCode: 400 },
+  cause = { },
+  statusCode = 400,
 } = {}) {
-  throw new Error(errMsg, { cause });
+  throw new Error(errMsg, { cause: { ...cause, statusCode } });
 }
 
 export function ConflictException({
